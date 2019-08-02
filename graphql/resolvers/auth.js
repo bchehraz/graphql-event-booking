@@ -38,7 +38,7 @@ module.exports = {
     // successful authentication credentials
     const token = jwt.sign(
       { userId: user.id, email: user.email },
-      'somesupersecretkeyiswhatimusingrightnow',
+      process.env.AUTH_SECRET,
       { expiresIn: '1h' }
     );
 
