@@ -1,6 +1,8 @@
+# nodemon files
+nodemon.json
+
 # Frontend Project Files
 frontend/
-gatsby-frontend/
 
 # Logs
 logs
