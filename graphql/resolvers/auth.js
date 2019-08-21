@@ -20,8 +20,15 @@ module.exports = {
         password: hashedPassword
       });
 
-      const result = await user.save();
-      return { ...result._doc, password: null, _id: result.id };
+      const newUser = await user.save();
+
+      const token = jwt.sign(
+        { userId: newUser.id, email: email },
+        process.env.AUTH_SECRET,
+        { expiresIn: '1h' }
+      );
+
+      return { userId: newUser.id, token: token, tokenExpiration: 1, email: email }
     } catch (err) {
       throw err;
     }
