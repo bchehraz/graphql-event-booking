@@ -10,6 +10,8 @@ module.exports = {
         events = await Event.find().where("price").gt(gt).lt(lt).sort(sort);
       } else if (gt) {
         events = await Event.find().where("price").gt(gt).sort(sort);
+      } else if (lt) {
+        events = await Event.find().where("price").lt(lt).sort(sort);
       }
 
       return events.map(transformEvent);
