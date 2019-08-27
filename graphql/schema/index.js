@@ -45,7 +45,7 @@ module.exports = buildSchema(`
   }
 
   type RootQuery {
-    events(where: String, sort: String): [Event!]!
+    events(wherePrice: { gt: Float, lt: Float }, sort: String): [Event!]!
     bookings: [Booking!]
     login(email: String!, password: String!): AuthData!
   }

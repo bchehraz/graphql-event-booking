@@ -3,9 +3,9 @@ const Event = require('../../models/event');
 const { transformEvent } = require('./merge');
 
 module.exports = {
-  events: async ({ where, sort }) => {
+  events: async ({ wherePrice: { gt, lt }, sort }) => {
     try {
-      const events = await Event.find().where(where).sort(sort);
+      const events = await Event.find().where("price").gt(gt).lt(lt).sort(sort);
       return events.map(transformEvent);
     } catch(err) {
       throw err;
