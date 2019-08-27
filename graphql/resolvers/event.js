@@ -6,12 +6,11 @@ module.exports = {
   events: async ({ wherePrice: { gt, lt }, sort }) => {
     try {
       let events = [];
-      if (gt && lt) {
+      if ((gt && lt) && (gt === lt)) {
+        const param = gt;
+        events = await Event.find().where("price").equals(param).sort(sort);
+      } else if (gt && lt) {
         events = await Event.find().where("price").gt(gt).lt(lt).sort(sort);
-      } else if (gt) {
-        events = await Event.find().where("price").gt(gt).sort(sort);
-      } else if (lt) {
-        events = await Event.find().where("price").lt(lt).sort(sort);
       }
 
       return events.map(transformEvent);
