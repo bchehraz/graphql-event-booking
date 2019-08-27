@@ -45,8 +45,8 @@ module.exports = buildSchema(`
   }
 
   input PriceRange {
-    gt: Float
-    lt: Float
+    gt: Float!
+    lt: Float!
   }
 
   type RootQuery {
