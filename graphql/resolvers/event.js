@@ -5,10 +5,11 @@ const { transformEvent } = require('./merge');
 module.exports = {
   events: async ({ wherePrice: { gt, lt }, sort }) => {
     try {
+      let events = [];
       if (gt && lt) {
-        const events = await Event.find().where("price").gt(gt).lt(lt).sort(sort);
+        events = await Event.find().where("price").gt(gt).lt(lt).sort(sort);
       } else if (gt) {
-        const events = await Event.find().where("price").gt(gt).sort(sort);
+        events = await Event.find().where("price").gt(gt).sort(sort);
       }
 
       return events.map(transformEvent);
