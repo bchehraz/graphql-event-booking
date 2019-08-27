@@ -5,7 +5,7 @@ const { transformEvent } = require('./merge');
 module.exports = {
   events: async () => {
     try {
-      const events = await Event.find().sort('date');
+      const events = await Event.find().sort('-date');
       return events.map(transformEvent);
     } catch(err) {
       throw err;
