@@ -45,7 +45,7 @@ module.exports = buildSchema(`
   }
 
   type RootQuery {
-    events: [Event!]!
+    events(where: String, sort: String): [Event!]!
     bookings: [Booking!]
     login(email: String!, password: String!): AuthData!
   }

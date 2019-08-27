@@ -3,9 +3,9 @@ const Event = require('../../models/event');
 const { transformEvent } = require('./merge');
 
 module.exports = {
-  events: async () => {
+  events: async ({ where, sort }) => {
     try {
-      const events = await Event.find().sort('-date');
+      const events = await Event.find().sort(sort);
       return events.map(transformEvent);
     } catch(err) {
       throw err;
