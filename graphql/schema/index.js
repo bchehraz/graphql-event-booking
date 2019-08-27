@@ -45,12 +45,12 @@ module.exports = buildSchema(`
   }
 
   input PriceRange {
-    gt: Float
-    lt: Float
+    gt: Float!
+    lt: Float!
   }
 
   type RootQuery {
-    events(wherePrice: PriceRange, sort: String): [Event!]!
+    events(priceRange: PriceRange!, sort: String): [Event!]!
     bookings: [Booking!]
     login(email: String!, password: String!): AuthData!
   }
