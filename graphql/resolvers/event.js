@@ -3,14 +3,13 @@ const Event = require('../../models/event');
 const { transformEvent } = require('./merge');
 
 module.exports = {
-  events: async ({ priceRange: { gt, lt }, sort }) => {
+  events: async ({ freeOnly }) => {
     try {
       let events = [];
-      if (gt === lt) {
-        const param = gt;
-        events = await Event.find().where("price").equals(param).sort(sort);
+      if (freeOnly) {
+        events = await Event.find().where("price").equals(0).sort("date");
       } else {
-        events = await Event.find().where("price").gt(gt).lt(lt).sort(sort);
+        events = await Event.find().where("price").sort("date");
       }
 
       return events.map(transformEvent);

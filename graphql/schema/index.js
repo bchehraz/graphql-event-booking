@@ -44,13 +44,8 @@ module.exports = buildSchema(`
     password: String!
   }
 
-  input PriceRange {
-    gt: Float!
-    lt: Float!
-  }
-
   type RootQuery {
-    events(priceRange: PriceRange!, sort: String): [Event!]!
+    events(freeOnly: Boolean): [Event!]!
     bookings: [Booking!]
     login(email: String!, password: String!): AuthData!
   }
