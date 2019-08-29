@@ -8,8 +8,9 @@ module.exports = {
       let events = [];
       if (freeOnly) {
         events = await Event.find().where('price').equals(0);
+      } else {
+        events = await Event.find();
       }
-      events = await Event.find();
 
       return events.map(transformEvent);
     } catch(err) {
