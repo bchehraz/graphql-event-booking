@@ -52,7 +52,7 @@ const transformEvent = event => {
   return {
     ...event._doc,
     date: dateToString(event._doc.date),
-    creator: user.bind(this, event._doc.creator)
+    creator: user.bind(this, event.creator)
   };
 };
 
