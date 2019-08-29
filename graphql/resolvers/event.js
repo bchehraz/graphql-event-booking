@@ -7,10 +7,11 @@ module.exports = {
     try {
       let events = [];
       if (freeOnly) {
-        events = await Event.find().where("price").equals(0).sort("date");
+        //events = await Event.find().where("price").equals(0).sort("date");
       } else {
-        events = await Event.find().sort("date");
+        //events = await Event.find().sort("date");
       }
+      events = await Event.find().sort("date");
 
       return events.map(transformEvent);
     } catch(err) {
