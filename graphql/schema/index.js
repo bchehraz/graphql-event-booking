@@ -45,7 +45,7 @@ module.exports = buildSchema(`
   }
 
   type RootQuery {
-    events: [Event!]!
+    events(freeOnly: Boolean): [Event!]!
     bookings: [Booking!]
     login(email: String!, password: String!): AuthData!
   }
